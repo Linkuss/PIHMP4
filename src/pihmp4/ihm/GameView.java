@@ -6,12 +6,7 @@ package pihmp4.ihm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import pihmp4.controllers.Manager;
@@ -28,6 +23,7 @@ public class GameView extends JFrame implements ActionListener{
     private JPanel contentPane;
     private GamePanel pGamePanel;
     private JButton btExit;
+    private JToggleButton btMute;
     private Manager manager;
 
     /**
@@ -73,6 +69,11 @@ public class GameView extends JFrame implements ActionListener{
         contentPane.add(btExit, "cell 0 2,alignx center");
         btExit.addActionListener(this);
         setMinimumSize(getSize());
+        
+        btMute = new JToggleButton(GlobalVar.getUnmutedImage());
+        pRightGameView.add(btMute, "cell 0 3,alignx center");
+        btMute.addActionListener(this);
+        setMinimumSize(getSize());
     }
 
     /**
@@ -93,6 +94,13 @@ public class GameView extends JFrame implements ActionListener{
         Object source = e.getSource();
         if (source == btExit) {
             manager.returnToMainView(this);
+        }else if(source == btMute){
+            manager.muteUnMuteSound();
+            if(btMute.isSelected()){
+                btMute.setIcon(GlobalVar.getMutedImage());
+            }else{
+                btMute.setIcon(GlobalVar.getUnmutedImage());
+            }
         }
     }
 }

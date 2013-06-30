@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -51,6 +52,10 @@ public class GlobalVar {
             Logger.getLogger(GlobalVar.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public static ImageIcon getMutedImage() {
+        return new ImageIcon(Class.class.getResource("/ressources/Default/mute.png"));
     }
 
     public static enum player {PLAYER1, PLAYER2, NOPLAYER, DRAW};
@@ -229,5 +234,9 @@ public class GlobalVar {
     public static String[] getAllthemes(){
         String[] t = new String[] {"Default", "Mario", "Zelda", "Sonic"};
         return t;
+    }
+    
+    public static ImageIcon getUnmutedImage(){
+        return new ImageIcon(Class.class.getResource("/ressources/Default/sound.png"));
     }
 }

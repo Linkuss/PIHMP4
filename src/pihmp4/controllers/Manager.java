@@ -479,6 +479,15 @@ public class Manager extends Observable {
             System.out.println(e.getMessage());
         }
     }
+    
+    public void muteUnMuteSound(){
+        GlobalVar.setIsMute(!GlobalVar.isIsMute());
+        if(GlobalVar.isIsMute()){
+            clip.stop();
+        }else{
+            clip.start();
+        }
+    }
 
     private void stopMusic() {
         try {
